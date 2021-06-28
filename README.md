@@ -1,0 +1,1 @@
+This is a low-level game, to practice my JS skills.
