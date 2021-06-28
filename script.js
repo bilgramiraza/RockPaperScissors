@@ -28,3 +28,29 @@ function playRound(computerChoice, playerChoice){
     const result = wintable[playerChoice][computerChoice];
     return result;
 }
+function game(){
+    let result=0;
+    let winner=0;
+    for(let i=0;i<5;i++){
+        let computerChoice = computerPlay();
+        let playerChoice = playerPlay();
+        result = playRound(computerChoice,playerChoice);
+        switch(result){
+            case 0:console.log(`Its a Draw`);
+                    break;
+            case 1:console.log(`${RPS[playerChoice]} beats ${RPS[computerChoice]} Player Wins`);
+                    winner++;
+                    break;
+            case 2:console.log(`${RPS[computerChoice]} beats ${RPS[playerChoice]} Computer Wins`);
+                    winner--;
+                    break;
+        }
+    }
+    if(!winner)
+        console.log('Its a Draw');
+    else if(winner>0)
+        console.log('Player Wins')
+    else
+        console.log('Computer Wins');
+}
+game();
