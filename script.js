@@ -53,6 +53,7 @@ function game(){
                     break;
         }
     }
+
     if(playerScore===5)
         console.log('Player Wins')
     else if(computerScore===5)

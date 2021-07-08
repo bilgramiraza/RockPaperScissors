@@ -2,9 +2,47 @@
 <html>
     <head>
         <title>Rock Paper Scissors</title>
-        <script src="script.js"></script>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap&effect=emboss" >
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        
+        <h1>Boulder Parchment Shears</h1>
+        <div class="gameLayout">
+            <div class="inputWindow">
+                <h2 >PLAYER</h2>
+                <img src="./img/boulder.svg">
+                <img src="./img/parchment.svg">
+                <img src="./img/shears.svg">
+            </div>
+
+            <div class="outputWindow">
+                <div>
+                    <h2>FIRST TO FIVE</h2>
+                </div>
+                <div class="scoreBoard">
+                    <img src="./img/boulder.svg">
+                    <div id="start">Start/Replay</div>
+                    <img src="./img/boulder.svg">
+                </div>
+                <div class="scoreTrack">
+                    <h4 id="playerScore">0</h4>
+                    <h3>SCORE</h3>
+                    <h4 id="computerScore">0</h4>
+                </div>
+                <div class="winnerRow">
+                    <h3>WINNER</h3>
+                    <h4>{} WON IN {} TURNS</h4>
+                </div>
+            </div>
+
+            <div class="inputWindow">
+                <h2>COMPUTER</h2>
+                <img src="./img/boulder.svg">
+                <img src="./img/parchment.svg">
+                <img src="./img/shears.svg">
+            </div>
+        </div>
+        <script src="script.js"></script>
     </body>
 </html>
