@@ -8,12 +8,14 @@
     </head>
     <body>
         <h1>Boulder Parchment Shears</h1>
-        <div class="gameLayout">
+        <div id="start">Start</div>
+
+        <div class="hide gameLayout">
             <div class="inputWindow">
                 <h2 >PLAYER</h2>
-                <img src="./img/boulder.svg">
-                <img src="./img/parchment.svg">
-                <img src="./img/shears.svg">
+                <input type="image" src="./img/boulder.svg" data-choice=false  data-input="Rock">
+                <input type="image" src="./img/parchment.svg" data-choice=false data-input="Paper">
+                <input type="image" src="./img/shears.svg" data-choice=false data-input="Scissors">
             </div>
 
             <div class="outputWindow">
@@ -22,7 +24,8 @@
                 </div>
                 <div class="scoreBoard">
                     <img src="./img/boulder.svg">
-                    <div id="start">Start/Replay</div>
+                    <div id="go">Go</div>
+                    <div id="replay">Replay</div>
                     <img src="./img/boulder.svg">
                 </div>
                 <div class="scoreTrack">
@@ -32,17 +35,18 @@
                 </div>
                 <div class="winnerRow">
                     <h3>WINNER</h3>
-                    <h4>{} WON IN {} TURNS</h4>
+                    <h4></h4>
                 </div>
             </div>
 
             <div class="inputWindow">
-                <h2>COMPUTER</h2>
-                <img src="./img/boulder.svg">
-                <img src="./img/parchment.svg">
-                <img src="./img/shears.svg">
+                <h2 >COMPUTER</h2>
+                <img src="./img/boulder.svg" data-input="Rock" data-choice=false>
+                <img src="./img/parchment.svg" data-input="Paper" data-choice=false>
+                <img src="./img/shears.svg" data-input="Scissors" data-choice=false>
             </div>
         </div>
         <script src="script.js"></script>
+        
     </body>
 </html>
