@@ -15,18 +15,50 @@ let playerScore=0;
 let computerScore=0;
 let turn=0;
 
-//Computer Input
-function computerPlay(){
-    const choice = Math.floor((Math.random()*3)); 
-    //console.log(`Computer: ${RPS[choice]}`);   //Error Handling
-    return choice;
-}
+//Event Handlers 
+start.addEventListener('click',()=>{
+    hideToggle(start, replay, document.querySelector('.gameLayout'));
+    // console.log(input);
+})
 
-//Decision making
-function playRound(computerChoice, playerChoice){
-    const result = wintable[playerChoice][computerChoice];
-    return result;
-}
+go.addEventListener('click',()=>{
+    try{
+        if(playerChoice===-1) throw "No Option Selected";
+        computerChoice=computer(); 
+        let winner = playRound(computerChoice,playerChoice);
+        roundWin(winner);
+        turn++;
+        if(playerScore===5){
+            hideToggle(go, replay);
+            winnerDisplay("PLAYER");
+        }
+        else if(computerScore===5){
+            hideToggle(go, replay);
+            winnerDisplay("COMPUTER");
+        }
+        // console.log(playerChoice);
+        // console.log(computerChoice);
+        // console.log(winner);
+    }
+    catch(err){
+        console.log(err);
+        alert("Select an Choice to Proceed");
+    }
+});
+
+replay.addEventListener('click',()=>{
+    location.reload();
+});
+
+input.forEach((element)=>{
+    element.addEventListener('click',()=>{
+        toggleSelectors(input,element.dataset.input);
+        playerChoice=RPS.indexOf(element.dataset.input);
+        vsUpdater(scoreBoard[0],element.dataset.input);
+        // console.log(playerChoice);
+    });
+});
+//Event Handlers 
 
 function toggleSelectors(list,target){
     list.forEach((element)=>{
@@ -39,54 +71,23 @@ function toggleSelectors(list,target){
     });
 }
 
-start.addEventListener('click',()=>{
-    hideToggle(start, replay, document.querySelector('.gameLayout'));
-    // console.log(input);
-})
-
-go.addEventListener('click',()=>{
-    try{
-        if(playerChoice===-1) throw "No Option Selected";
-        computerChoice=computer(); 
-        // console.log(playerChoice);
-        // console.log(computerChoice);
-        let winner = playRound(computerChoice,playerChoice);
-        // console.log(winner);
-        roundWin(winner);
-        turn++;
-        if(playerScore===5){
-            hideToggle(go, replay);
-            winnerDisplay("PLAYER");
-        }
-        else if(computerScore===5){
-            hideToggle(go, replay);
-            winnerDisplay("COMPUTER");
-        }
-    }
-    catch(err){
-        console.log(err);
-        alert("Select an Choice to Proceed");
-    }
-});
-
-replay.addEventListener('click',()=>{
-    location.reload();
-});
-
-
-input.forEach((element)=>{
-    element.addEventListener('click',()=>{
-        toggleSelectors(input,element.dataset.input);
-        playerChoice=RPS.indexOf(element.dataset.input);
-        vsUpdater(scoreBoard[0],element.dataset.input);
-        // console.log(playerChoice);
-    });
-});
-
 function hideToggle(...tag){
     tag.forEach((element)=>{
         element.classList.toggle('hide');
     })
+}
+
+//Computer Input
+function computerPlay(){
+    const choice = Math.floor((Math.random()*3)); 
+    //console.log(`Computer: ${RPS[choice]}`);   //Error Handling
+    return choice;
+}
+
+//Decision making
+function playRound(computerChoice, playerChoice){
+    const result = wintable[playerChoice][computerChoice];
+    return result;
 }
 
 function computer(){
@@ -154,7 +155,7 @@ function winnerBox(winner){
 function winnerDisplay(winner){
     const winnerRow=document.querySelector('.winnerRow>h4');
     const winnerName=document.querySelectorAll('.inputWindow>h2');
-    if(winner==="USER"){
+    if(winner==="PLAYER"){
         winnerName[0].style.border="5px solid green";
         winnerName[0].style.margin="-5px";
     }
@@ -164,3 +165,4 @@ function winnerDisplay(winner){
     }
     winnerRow.textContent=`${winner} WON IN ${turn} TURNS`;
 }
+
